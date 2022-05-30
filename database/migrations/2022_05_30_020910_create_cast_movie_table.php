@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seasons', function (Blueprint $table) {
+        Schema::create('cast_movie', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('imdb_id')->unique();
-            $table->foreignId('serie_id')->constrained();
-            $table->string('name');
-            $table->string('season_number');
-            $table->string('slug');
-            $table->string('poster_path');
-            $table->timestamps();
+            $table->foreignId('cast_id')->constrained();
+            $table->foreignId('movie_id')->constrained();
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seasons');
+        Schema::dropIfExists('cast_movie');
     }
 };

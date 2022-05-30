@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->id();
+            $table->string('tmdb_id')->unique();
+            $table->string('name');
+            $table->date('slug');
+            $table->string('created_year')->nullable();
+            $table->string('poster_path');
+            $table->bigInteger('visits')->default(1);
             $table->timestamps();
         });
     }
